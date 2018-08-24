@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="category">
+        <item>Music</item>
+        <item>Videos</item>
+        <item>Images</item>
+        <item>eBooks and PDFs</item>
+        <item>Other</item>
+    </array>
+    <array name="mode">
+        <item>Normal Search</item>
+        <item>Deep Search</item>
+        <item>Specific search</item>
+    </array>
+    <array name="Images">
+        <item>ShutterStock</item>
+        <item>NegativeSpace</item>
+        <item>DeathToTheStockPhoto</item>
+        <item>PicJumbo</item>
+        <item>StokPic</item>
+        <item>KaboomPics</item>
+        <item>PhotoBucket</item>
+        <item>FreeRangeStock</item>
+        <item>Libreshot</item>
+        <item>Fancycrave</item>
+        <item>Unsplash</item>
+    </array>
+    <array name="Music">
+        <item>Spotify</item>
+        <item>SoundCloud</item>
+        <item>Last FM</item>
+        <item>Saavn</item>
+        <item>Gaana</item>
+        <item>Tune In</item>
+        <item>Napster</item>
+        <item>Bandcamp</item>
+    </array>
+    <array name="Videos">
+        <item>YouTube</item>
+        <item>DailyMotion</item>
+        <item>Vimeo</item>
+        <item>Flickr</item>
+        <item>Veoh</item>
+        <item>MetaCafe</item>
+    </array>
+
+    <array name="eBooksandPDFs">
+        <item>Scribd</item>
+        <item>WikiBooks</item>
+        <item>GetFreeEbooks</item>
+        <item>Baen</item>
+        <item>Free-eBooks</item>
+        <item>ManyBooks</item>
+        <item>PlanetPublish</item>
+        <item>AdobeBooks</item>
+        <item>BookBoon</item>
+    </array>
+    <array name="eng">
+        <item>Google</item>
+        <item>Yandex</item>
+        <item>DuckDuckGo</item>
+        <item>Bing</item>
+        <item>Yahoo</item>
+        <item>Baidu</item>
+        <item>Ask.com</item>
+        <item>AOL.com</item>
+        <item>Torrent Search</item>
+    </array>
+    <array name="engd">
+        <item>Onion Link</item>
+        <item>The WWW Virtual Library</item>
+        <item>Stumpedia</item>
+        <item>TechDeepWeb</item>
+        <item>Surfwax</item>
+        <item>StartPage</item>
+        <item>DeeperWeb</item>
+        <item>Dogpile</item>
+    </array>
+    <array name="normal">
+        <item>Browse</item>
+        <item>Download</item>
+    </array>
+    <array name="other">
+        <item>Anything</item>
+    </array>
+</resources>
