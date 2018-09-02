@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:configChanges="orientation|screenSize"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     tools:context="com.notebook.idealabs.deepsearch.Webview">
 
     <android.support.design.widget.AppBarLayout
@@ -24,13 +23,13 @@
 
     <include layout="@layout/content_webview" />
 
-    <com.google.android.gms.ads.AdView
+    <!--<com.google.android.gms.ads.AdView
         android:id="@+id/browse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         ads:adUnitId="ca-app-pub-1364271166547745/6398053906"
         ads:adSize="BANNER"
-        android:layout_gravity="bottom" />
+        android:layout_gravity="bottom" />-->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -44,7 +43,6 @@
         android:layout_marginStart="@dimen/fab_margin"
         android:layout_marginTop="@dimen/fab_margin"
         app:elevation="24dp"
-        app:layout_anchor="@id/browse"
         app:layout_anchorGravity="end"
         app:srcCompat="?android:attr/actionModeCopyDrawable" />
 

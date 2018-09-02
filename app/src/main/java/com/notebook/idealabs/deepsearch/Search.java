@@ -1,9 +1,11 @@
 package com.notebook.idealabs.deepsearch;
 
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,9 +21,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
-import com.google.android.gms.ads.AdRequest;
+/*import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.MobileAds;*/
 
 public class Search extends AppCompatActivity {
     EditText userquery;
@@ -34,7 +36,7 @@ public class Search extends AppCompatActivity {
     Spinner engined;
     Spinner mode;
 
-    private AdView mAdView;
+    //private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,11 +122,11 @@ public class Search extends AppCompatActivity {
             }
         });
 
-        MobileAds.initialize(this, "ca-app-pub-1364271166547745/3208891580");
+        /*MobileAds.initialize(this, "ca-app-pub-1364271166547745/3208891580");
 
         mAdView = (AdView) findViewById(R.id.definesearch);
         AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
     }
 
@@ -493,24 +495,33 @@ public class Search extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_about) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.share_menu_id:
+                Intent sendIntent = new Intent();
+                sendIntent.setAction("android.intent.action.SEND");
+                sendIntent.putExtra("android.intent.extra.TEXT", "Hey check out this new app at: https://play.google.com/store/apps/details?id=" + getPackageName());
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent, "Share via"));
+                return true;
+            case R.id.rate_us_menu_id:
+                String appPackageName = getPackageName();
+                try {
+                    startActivity(new Intent("android.intent.action.VIEW", Uri.parse("market://details?id=" + appPackageName)));
+                    return true;
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent("android.intent.action.VIEW", Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                    return true;
+                }
+            case R.id.more_apps_menu_id:
+                try {
+                    startActivity(new Intent("android.intent.action.VIEW", Uri.parse("market://developer?id=7665922803421240272")));
+                    return true;
+                } catch (ActivityNotFoundException e2) {
+                    startActivity(new Intent("android.intent.action.VIEW", Uri.parse("https://play.google.com/store/apps/dev?id=7665922803421240272")));
+                    return true;
+                }
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        else if (id == R.id.action_share) {
-            Intent sendIntent = new Intent();
-            sendIntent.setAction("android.intent.action.SEND");
-            sendIntent.putExtra("android.intent.extra.TEXT", "Hey check out this new app to efficiently find content on Internet at: https://play.google.com/store/apps/details?id=" + getPackageName());
-            sendIntent.setType("text/plain");
-            startActivity(Intent.createChooser(sendIntent, "Share via"));
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

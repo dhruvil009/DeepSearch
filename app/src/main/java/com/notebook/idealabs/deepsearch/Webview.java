@@ -1,5 +1,6 @@
 package com.notebook.idealabs.deepsearch;
 
+import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
@@ -21,9 +22,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-import com.google.android.gms.ads.AdRequest;
+/*import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.MobileAds;*/
 
 public class Webview extends AppCompatActivity {
 
@@ -31,7 +32,7 @@ public class Webview extends AppCompatActivity {
     WebView webView;
     String copiedURL = "";
 
-    private AdView mAdView;
+    //private AdView mAdView;
 
     class webclient extends WebChromeClient{
         public void onProgressChanged(WebView view, int progress) {
@@ -55,11 +56,11 @@ public class Webview extends AppCompatActivity {
 
         Configuration config = getResources().getConfiguration();
 
-        MobileAds.initialize(this, "ca-app-pub-1364271166547745/6398053906");
+        /*MobileAds.initialize(this, "ca-app-pub-1364271166547745/6398053906");
 
         mAdView = (AdView) findViewById(R.id.browse);
         AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
         toolbar.setTitle((CharSequence) "");
         toolbar.setSubtitle((CharSequence) "");
@@ -112,7 +113,7 @@ public class Webview extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (Webview.this.copiedURL != null) {
-                    ((ClipboardManager) Webview.this.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("Copied Text", Webview.this.copiedURL));
+                    ((ClipboardManager) Webview.this.getSystemService(CLIPBOARD_SERVICE)).setPrimaryClip(ClipData.newPlainText("Copied Text", Webview.this.copiedURL));
                     Snackbar.make(view, "URL Copied : " + Webview.this.copiedURL, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
@@ -139,25 +140,34 @@ public class Webview extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_about) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.share_menu_id:
+                Intent sendIntent = new Intent();
+                sendIntent.setAction("android.intent.action.SEND");
+                sendIntent.putExtra("android.intent.extra.TEXT", "Hey check out this new app at: https://play.google.com/store/apps/details?id=" + getPackageName());
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent, "Share via"));
+                return true;
+            case R.id.rate_us_menu_id:
+                String appPackageName = getPackageName();
+                try {
+                    startActivity(new Intent("android.intent.action.VIEW", Uri.parse("market://details?id=" + appPackageName)));
+                    return true;
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent("android.intent.action.VIEW", Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                    return true;
+                }
+            case R.id.more_apps_menu_id:
+                try {
+                    startActivity(new Intent("android.intent.action.VIEW", Uri.parse("market://developer?id=7665922803421240272")));
+                    return true;
+                } catch (ActivityNotFoundException e2) {
+                    startActivity(new Intent("android.intent.action.VIEW", Uri.parse("https://play.google.com/store/apps/dev?id=7665922803421240272")));
+                    return true;
+                }
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        else if (id == R.id.action_share) {
-            Intent sendIntent = new Intent();
-            sendIntent.setAction("android.intent.action.SEND");
-            sendIntent.putExtra("android.intent.extra.TEXT", "Hey check out this new app to efficiently find content on Internet at: https://play.google.com/store/apps/details?id=" + getPackageName());
-            sendIntent.setType("text/plain");
-            startActivity(Intent.createChooser(sendIntent, "Share via"));
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
 }

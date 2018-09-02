@@ -26,13 +26,13 @@
         android:id="@+id/include"
         layout="@layout/content_search" />
 
-    <com.google.android.gms.ads.AdView
+    <!--<com.google.android.gms.ads.AdView
         android:id="@+id/definesearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         ads:adUnitId="ca-app-pub-1364271166547745/3208891580"
         ads:adSize="BANNER"
-        android:layout_gravity="bottom" />
+        android:layout_gravity="bottom" />-->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -46,8 +46,8 @@
         android:layout_marginStart="@dimen/fab_margin"
         android:layout_marginTop="@dimen/fab_margin"
         app:elevation="24dp"
-        app:layout_anchor="@id/definesearch"
-        app:layout_anchorGravity="end"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="right|center"
         app:srcCompat="@android:drawable/ic_search_category_default" />
 
 

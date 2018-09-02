@@ -5,4 +5,5 @@
     <string name="action_share">Share</string>
     <string name="project_id">content-finder</string>
     <string name="title_activity_webview">Webview</string>
+    <string name="more">More Apps By Notebook Inc</string>
 </resources>
