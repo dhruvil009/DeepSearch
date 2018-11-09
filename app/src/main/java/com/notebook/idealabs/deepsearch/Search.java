@@ -21,10 +21,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
-/*import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;*/
-
 public class Search extends AppCompatActivity {
     EditText userquery;
     LinearLayout deep;
@@ -36,7 +32,6 @@ public class Search extends AppCompatActivity {
     Spinner engined;
     Spinner mode;
 
-    //private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,12 +116,6 @@ public class Search extends AppCompatActivity {
                             .setAction("Action", null).show();
             }
         });
-
-        /*MobileAds.initialize(this, "ca-app-pub-1364271166547745/3208891580");
-
-        mAdView = (AdView) findViewById(R.id.definesearch);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
-        mAdView.loadAd(adRequest);*/
 
     }
 
@@ -495,6 +484,9 @@ public class Search extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.share_menu_id:
                 Intent sendIntent = new Intent();
