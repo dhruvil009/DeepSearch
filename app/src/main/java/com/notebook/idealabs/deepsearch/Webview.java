@@ -22,9 +22,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-/*import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;*/
 
 public class Webview extends AppCompatActivity {
 
@@ -55,12 +52,6 @@ public class Webview extends AppCompatActivity {
         setContentView(R.layout.activity_webview);
 
         Configuration config = getResources().getConfiguration();
-
-        /*MobileAds.initialize(this, "ca-app-pub-1364271166547745/6398053906");
-
-        mAdView = (AdView) findViewById(R.id.browse);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
-        mAdView.loadAd(adRequest);*/
 
         toolbar.setTitle((CharSequence) "");
         toolbar.setSubtitle((CharSequence) "");
